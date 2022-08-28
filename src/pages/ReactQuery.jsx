@@ -5,9 +5,13 @@ import { useQuery } from '@tanstack/react-query';
 const fetchAnimal = () => axios.get('/animal');
 
 function ReactQuery() {
-  const { data, isLoading } = useQuery(['animal'], fetchAnimal);
+  const { data, isLoading, isError, error } = useQuery(['animal'], fetchAnimal);
 
   if (isLoading) return <div>Loding</div>;
+
+  if (isError) {
+    return <div>{error.message}</div>;
+  }
 
   const createData = () => {
     return data?.data.map((item) => {
