@@ -7,13 +7,14 @@ const fetchAnimal = () => axios.get('/animal');
 function ReactQuery() {
   /* cacheTime뒤에 가비지 컬렉터을 사용해서 제거 */
   /* staleTime뒤에 fetch 네트워크에 fetch 요청 전송 */
-  const { data, isLoading, isError, error } = useQuery(
+  /* refetch로 클릭이벤트 활용 가능  */
+  const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
     ['animal'],
     fetchAnimal,
-    { cacheTime: 5000, staleTime: 30000 },
+    { enabled: false },
   );
 
-  if (isLoading) return <div>Loding</div>;
+  if (isLoading && isFetching) return <div>Loding</div>;
 
   if (isError) {
     return <div>{error.message}</div>;
@@ -25,7 +26,12 @@ function ReactQuery() {
     });
   };
 
-  return <React.Fragment>{createData()}</React.Fragment>;
+  return (
+    <React.Fragment>
+      <button onClick={refetch}>클릭</button>
+      {createData()}
+    </React.Fragment>
+  );
 }
 
 export default ReactQuery;
