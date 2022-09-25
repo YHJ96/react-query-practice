@@ -17,8 +17,34 @@
     }
   ],
   "trainer": [
-    { "id": 1, "name": "YHJ" },
-    { "id": 2, "name": "HGD" },
-    { "id": 3, "name": "HSB" }
+    {
+      "id": 1,
+      "name": "YHJ"
+    },
+    {
+      "id": 2,
+      "name": "HGD"
+    },
+    {
+      "id": 3,
+      "name": "HSB"
+    }
+  ],
+  "student": [
+    {
+      "id": 1,
+      "name": "YHJ",
+      "age": 20
+    },
+    {
+      "id": 2,
+      "name": "HGD",
+      "age": 24
+    },
+    {
+      "id": 3,
+      "name": "HSB",
+      "age": 31
+    }
   ]
 }
