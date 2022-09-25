@@ -15,5 +15,10 @@
       "name": "사자",
       "count": 1
     }
+  ],
+  "trainer": [
+    { "id": 1, "name": "YHJ" },
+    { "id": 2, "name": "HGD" },
+    { "id": 3, "name": "HSB" }
   ]
 }
