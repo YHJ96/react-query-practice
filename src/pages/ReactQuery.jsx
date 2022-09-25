@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const fetchAnimal = () => axios.get('/animal');
 
@@ -14,10 +15,10 @@ function ReactQuery() {
 
   const onError = () => console.log('OnError');
 
-  const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
+  const { data, isLoading, isError, error, isFetching } = useQuery(
     ['animal'],
     fetchAnimal,
-    { enabled: false, onSuccess, onError },
+    { onSuccess, onError },
   );
 
   if (isLoading && isFetching) return <div>Loding</div>;
@@ -26,18 +27,23 @@ function ReactQuery() {
     return <div>{error.message}</div>;
   }
 
-  const createData = () => {
+  // const createData = () => {
+  //   return data?.data.map((item) => {
+  //     return <div key={item.id}>{item.name}</div>;
+  //   });
+  // };
+
+  const createListButton = () => {
     return data?.data.map((item) => {
-      return <div key={item.id}>{item.name}</div>;
+      return (
+        <Link key={item.id} to={`/query/${item.id}`}>
+          <button>{item.name}</button>
+        </Link>
+      );
     });
   };
 
-  return (
-    <React.Fragment>
-      <button onClick={refetch}>클릭</button>
-      {createData()}
-    </React.Fragment>
-  );
+  return <React.Fragment>{createListButton()}</React.Fragment>;
 }
 
 export default ReactQuery;
