@@ -4,6 +4,7 @@ import ReactState from './pages/ReactState';
 import ReactQueryDetail from './pages/ReactQueryDetail';
 import ReactUseQueries from './pages/ReactUseQueries';
 import ReactUseMutation from './pages/ReactUseMutation';
+import ReactUseInfiniteQuery from './pages/ReactUseInfiniteQuery';
 import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -21,12 +22,17 @@ function App() {
       <Link to="/mutation">
         <li>React-UseMutation</li>
       </Link>
+      <Link to="/infinite">
+        <li>React-UseInfinite</li>
+      </Link>
+
       <Routes>
         <Route path="/" element={<ReactState />} />
         <Route path="/queries" element={<ReactUseQueries />} />
         <Route path="/mutation" element={<ReactUseMutation />} />
         <Route path="/query" element={<ReactQuery />} />
         <Route path="/query/:id" element={<ReactQueryDetail />} />
+        <Route path="/infinite" element={<ReactUseInfiniteQuery />} />
       </Routes>
     </React.Fragment>
   );
